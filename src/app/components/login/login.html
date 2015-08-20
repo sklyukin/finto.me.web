@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="text-center">Войти</h1>
+  <form [ng-form-model]="loginForm" (submit)="onSubmit($event, loginForm.value)">
+    <div class="form-group">
+      <label >Email</label>
+      <input type="text" class="form-control" [ng-form-control]="loginForm.controls['email']">
+    </div>
+    <div class="form-group">
+      <label>Пароль</label>
+      <input type="password" class="form-control" [ng-form-control]="loginForm.controls['password']">
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+  </form>
+</div>
