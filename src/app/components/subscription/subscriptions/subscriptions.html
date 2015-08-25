@@ -1,6 +1,18 @@
 <div>
+  <br>
   <h1 class="text-center">Подписки на уведомления</h1>
-  <div *ng-for="#subscription of subscriptions">
-    {{subscription | json}}
+  <br>
+  <div>
+    <button class="btn btn-primary"><i class="fa fa-plus"></i> Добавить уведомление</button>
   </div>
+  <br>
+  <table class="table">
+    <tr>
+      <th>Инструмент</th>
+      <th>Процент изменения</th>
+      <th>Последнее значение</th>
+      <th>Действия</th>
+    </tr>
+  <tr *ng-for="#subscription of subscriptions" subscription-component [subscription]="subscription"></tr>
+  </table>
 </div>

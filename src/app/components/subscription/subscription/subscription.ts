@@ -6,14 +6,17 @@ import {appDirectives, angularDirectives} from 'app/directives/directives';
 let template = require('./subscription.html');
 
 @Component({
-  selector: 'subscription',
+  selector: '[subscription-component]',
+  properties: ['subscription']
 })
 @View({
   directives: [angularDirectives, appDirectives],
   encapsulation: ViewEncapsulation.EMULATED,
   template: template
 })
-export class Subscriptions {
+export class Subscription {
+  subscription:Object;
+
   constructor() {
   }
 }
