@@ -2,6 +2,7 @@
 
 import {bind, Injectable, Http} from 'angular2/angular2';
 import {ApiService} from './ApiService';
+import {Router} from 'angular2/router';
 //
 
 @Injectable()
@@ -9,7 +10,26 @@ export class UserService {
   jwtData:Object;
   currentUser:Object;
 
-  constructor(public http:Http, public api:ApiService) {
+  constructor(public http:Http, public api:ApiService, public router:Router) {
+    this.parseJwtCache();
+  }
+
+  parseJwtCache() {
+    let str = localStorage.getItem('jwt');
+    if (str) {
+      try {
+        let jwt = JSON.parse(str);
+        if (jwt.userId) {
+          this.jwtData = jwt;
+        }
+      }
+      finally{
+
+      }
+    }
+    if (this.jwtData) {
+      this.requestUser();
+    }
   }
 
   login(email, password) {
@@ -27,6 +47,7 @@ export class UserService {
         console.log(`we have user`);
         console.log(user);
         this.currentUser = user;
+        this.router.navigate('/');
       })
   }
 

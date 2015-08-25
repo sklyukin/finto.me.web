@@ -90,7 +90,7 @@ let styles   = require('./app.css');
           <li class="l-left">
             <a [router-link]=" ['/login'] "class="top-nav-button ac-default-theme">Login</a>
           </li>
-          <user-navbar></user-navbar>
+          <li class="user-navbar l-left"></li>
         </ul>
       </div>
     </header>
