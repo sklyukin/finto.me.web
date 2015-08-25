@@ -1,6 +1,4 @@
 /// <reference path="../../typings/_custom.d.ts" />
-
-require("bootstrap-webpack");
 /*
  * Angular 2
  */
@@ -40,7 +38,7 @@ import {UserService} from '../services/UserService'
 import {RxJsExamples} from './rxjs-examples/rxjs-examples';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
-let styles   = require('./app.css');
+let styles = require('./app.css');
 
 /*
  * App Component
@@ -49,7 +47,7 @@ let styles   = require('./app.css');
  */
 @Component({
   selector: 'app', // without [ ] means we are selecting the tag directly
-  viewBindings: [ appPipes ]
+  viewBindings: [appPipes]
 })
 @View({
   // needed in order to tell Angular's compiler what's in the template
@@ -68,33 +66,32 @@ let styles   = require('./app.css');
     [UserNavbar]
   ],
   // include our .css file
-  styles: [ styles ],
+  styles: [styles],
   template: `
     <header>
-      <div layout="row" class="top-nav ac-default-theme">
-        <img src="angular-shield.png" alt="Angular2" height="54" width="54">
-        <span class="logo">{{ name | capitalize }} + Webpack</span>
-        <ul>
-          <li class="l-left">
-            <a [router-link]=" ['/home'] "class="top-nav-button ac-default-theme">Home</a>
-          </li>
-          <li class="l-left">
-            <a [router-link]=" ['/dashboard'] "class="top-nav-button ac-default-theme">Dashboard</a>
-          </li>
-          <li class="l-left">
-            <a [router-link]=" ['/todo'] "class="top-nav-button ac-default-theme">Todo</a>
-          </li>
-          <li class="l-left">
-            <a [router-link]=" ['/rxjs-examples', 'search'] "class="top-nav-button ac-default-theme">RxJs Examples</a>
-          </li>
-          <li class="l-left">
-            <a [router-link]=" ['/login'] "class="top-nav-button ac-default-theme">Login</a>
-          </li>
-          <li class="user-navbar l-left"></li>
+      <nav class="navbar navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand">Уведомления</a>
+         <ul class="nav navbar-nav">
+            <li class="nav-item active">
+              <a [router-link]=" ['/home'] "class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a [router-link]=" ['/dashboard'] "class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a [router-link]=" ['/todo'] "class="nav-link">Todo</a>
+            </li>
+            <li class="nav-item">
+              <a [router-link]=" ['/rxjs-examples', 'search'] "class="nav-link">RxJs Examples</a>
+            </li>
+            <li class="nav-item">
+            <a [router-link]=" ['/login'] "class="nav-link">Войти</a>
+            </li>
+            <li class="user-navbar nav-item"></li>
         </ul>
       </div>
-    </header>
-
+      </nav>
     <main>
       <router-outlet></router-outlet>
     </main>
@@ -105,14 +102,15 @@ let styles   = require('./app.css');
   `
 })
 @RouteConfig([
-  { path: '/',                  as: 'home',          component: Home },
-  { path: '/dashboard',         as: 'dashboard',     component: Dashboard },
-  { path: '/todo',              as: 'todo',          component: Todo },
-  { path: '/rxjs-examples/...', as: 'rxjs-examples', component: RxJsExamples },
-  { path: '/login',                  as: 'login',          component: Login },
+  {path: '/', as: 'home', component: Home},
+  {path: '/dashboard', as: 'dashboard', component: Dashboard},
+  {path: '/todo', as: 'todo', component: Todo},
+  {path: '/rxjs-examples/...', as: 'rxjs-examples', component: RxJsExamples},
+  {path: '/login', as: 'login', component: Login},
 ])
 export class App {
-  name: string;
+  name:string;
+
   constructor() {
     this.name = 'angular'; // used in logo
   }
