@@ -28,11 +28,8 @@ import {Home} from './home/home';
 import {UserNavbar} from './layout/navbar/user/user';
 
 // Otherwise we only use one file for a component
-import {Dashboard} from './dashboard';
 // A simple example of a Component using a Service
 import {Todo} from './todo';
-import {ApiService} from '../services/ApiService'
-import {UserService} from '../services/UserService'
 
 // RxJs examples
 import {RxJsExamples} from './rxjs-examples/rxjs-examples';
@@ -74,10 +71,7 @@ let styles = require('./app.css');
         <a class="navbar-brand">Уведомления</a>
          <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a [router-link]=" ['/home'] "class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <a [router-link]=" ['/dashboard'] "class="nav-link">Dashboard</a>
+              <a [router-link]=" ['/home'] "class="nav-link">Главная</a>
             </li>
             <li class="nav-item">
               <a [router-link]=" ['/todo'] "class="nav-link">Todo</a>
@@ -85,10 +79,12 @@ let styles = require('./app.css');
             <li class="nav-item">
               <a [router-link]=" ['/rxjs-examples', 'search'] "class="nav-link">RxJs Examples</a>
             </li>
-            <li class="nav-item">
-            <a [router-link]=" ['/login'] "class="nav-link">Войти</a>
-            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
             <li class="user-navbar nav-item"></li>
+            <li class="nav-item">
+              <a [router-link]=" ['/login'] "class="nav-link">Войти</a>
+            </li>
         </ul>
       </div>
       </nav>
@@ -103,7 +99,6 @@ let styles = require('./app.css');
 })
 @RouteConfig([
   {path: '/', as: 'home', component: Home},
-  {path: '/dashboard', as: 'dashboard', component: Dashboard},
   {path: '/todo', as: 'todo', component: Todo},
   {path: '/rxjs-examples/...', as: 'rxjs-examples', component: RxJsExamples},
   {path: '/login', as: 'login', component: Login},

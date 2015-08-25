@@ -3,15 +3,22 @@
 import {bind, Injectable, Http} from 'angular2/angular2';
 import {ApiService} from './ApiService';
 import {Router} from 'angular2/router';
-//
+import * as Rx from 'rx';
 
 @Injectable()
 export class UserService {
   jwtData:Object;
   currentUser:Object;
+  currentUserObservable: Rx.Subject<Object>;
 
   constructor(public http:Http, public api:ApiService, public router:Router) {
+    this.currentUserObservable = new Rx.Subject<Object>();
+
     this.parseJwtCache();
+
+    this.currentUserObservable.subscribe((user) => {
+      this.currentUser = user;
+    });
   }
 
   parseJwtCache() {
@@ -23,7 +30,7 @@ export class UserService {
           this.jwtData = jwt;
         }
       }
-      finally{
+      finally {
 
       }
     }
@@ -36,21 +43,21 @@ export class UserService {
     return this.api.request('post', 'users/login', {email, password})
       .subscribe((jwtData) => {
         this._setJwtData(jwtData);
-        this.requestUser();
+        this.requestUser().subscribe(() => {
+          this.router.navigate('/');
+        })
       });
   }
 
   requestUser() {
     let userId = this.jwtData.userId;
-    return this.api.request('get', `users/${userId}`)
-      .subscribe((user) => {
-        console.log(`we have user`);
-        console.log(user);
-        this.currentUser = user;
-        this.router.navigate('/');
-      })
-  }
+    let observer = this.api.request('get', `users/${userId}`);
+    observer.subscribe((user) => {
+      this.currentUserObservable.onNext(user);
+    });
 
+    return observer;
+  }
 
   _setJwtData(jwtData) {
     this.jwtData = jwtData;

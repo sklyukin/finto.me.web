@@ -1,0 +1,6 @@
+<div>
+  <h1 class="text-center">Подписки на уведомления</h1>
+  <div *ng-for="#subscription of subscriptions">
+    {{subscription | json}}
+  </div>
+</div>

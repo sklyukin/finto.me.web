@@ -11,9 +11,9 @@ import {Component, View, ViewEncapsulation} from 'angular2/angular2';
  * appDirectives: Our collection of directives from /directives
  */
 import {appDirectives, angularDirectives} from 'app/directives/directives';
+import {Subscriptions} from '../subscription/subscriptions/subscriptions';
 
 // Use webpack's `require` to get files as a raw string using raw-loader
-let styles   = require('./home.css');
 let template = require('./home.html');
 
 // Simple external file component example
@@ -21,10 +21,8 @@ let template = require('./home.html');
   selector: 'home'
 })
 @View({
-  directives: [ angularDirectives, appDirectives ],
+  directives: [ angularDirectives, appDirectives, Subscriptions],
   encapsulation: ViewEncapsulation.EMULATED,
-  // include our .html and .css file
-  styles: [ styles ],
   template: template
 })
 export class Home {
