@@ -6,20 +6,20 @@ import {UserService} from './UserService';
 import {Router} from 'angular2/router';
 import * as Rx from 'rx';
 
-class Subscription {
+export class Subscription {
   id:String;
   dataId:String;
   options:{
     percentChange: Number
   }
 }
+
 @Injectable()
 export class SubscriptionService {
   subscriptions:Rx.Subject<Array<Subscription>>;
 
   constructor(public api:ApiService, public user:UserService) {
-    this.subscriptions = new Rx.Subject<Array<Subscription>>();
-
+    this.subscriptions = new Rx.BehaviorSubject<Array<Subscription>>();
     this.user.currentUserObservable.subscribe((user) => {
       this.api.request('get', `users/${user.id}/subscriptions`)
         .subscribe((subscriptions) => {

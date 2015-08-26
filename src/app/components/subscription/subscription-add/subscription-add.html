@@ -1,0 +1,24 @@
+<div class="container">
+  <br>
+
+  <h1 class="text-center">Добавить уведомление</h1>
+  <br>
+  <input #securityFilter placeholder="Поиск" type="text" class="form-control" (keyup)="search($event, $value)">
+  <br>
+
+  <div class="table-responsive">
+    <table class="table">
+      <tr *ng-for="#security of securities | limitTo: 20 ">
+        <td>
+          <button class="btn btn-link btn-sm" ><i class="fa fa-plus"></i></button>
+        </td>
+        <td>
+          <strong>{{security.dataId}}</strong> / {{security.title}}
+        </td>
+        <td>
+          {{security.value}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

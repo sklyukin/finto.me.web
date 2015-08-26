@@ -14,12 +14,9 @@ import {routerDirectives} from 'angular2/router';
 import {appDirectives} from '../directives/directives';
 import {UserService} from 'app/services/UserService';
 
-/*
- * Components
- */
-// We use a folder if we want separate files
 import {Login} from './login/login';
 import {Home} from './home/home';
+import {SubscriptionAdd} from './subscription/subscription-add/subscription-add';
 import {UserNavbar} from './layout/navbar/user/user';
 
 
@@ -82,10 +79,9 @@ let styles = require('./app.css');
 @RouteConfig([
   {path: '/', as: 'home', component: Home},
   {path: '/login', as: 'login', component: Login},
+  {path: '/subscription/add', as: 'subscription-add', component: SubscriptionAdd}
 ])
 export class App {
-  name:string;
-
   constructor(public userService: UserService) {
   }
 }
