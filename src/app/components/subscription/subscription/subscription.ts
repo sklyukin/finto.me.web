@@ -28,10 +28,12 @@ export class SubscriptionComponent {
   }
 
   remove() {
-    this.subscriptionService.remove(this.subscription)
-      .subscribe(() => {
-        console.log('removed');
-        this.subscriptionService.updateSubscriptions();
-      })
+    if (confirm(`Удалить подписку на ${this.subscription.dataId}?`)) {
+      this.subscriptionService.remove(this.subscription)
+        .subscribe(() => {
+          console.log('removed');
+          this.subscriptionService.updateSubscriptions();
+        })
+    }
   }
 }
