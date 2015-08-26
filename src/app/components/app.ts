@@ -58,9 +58,6 @@ let styles = require('./app.css');
             <li class="nav-item active">
               <a [router-link]=" ['/home'] "class="nav-link">Главная</a>
             </li>
-            <li class="nav-item active">
-              <a [router-link]=" ['/home'] "class="nav-link">Главная</a>
-            </li>
         </ul>
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item" *ng-if="!userService.currentUser">
