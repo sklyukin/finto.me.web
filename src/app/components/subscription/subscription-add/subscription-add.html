@@ -10,7 +10,7 @@
     <table class="table">
       <tr *ng-for="#security of securities | limitTo: 20 ">
         <td>
-          <button class="btn btn-link btn-sm" ><i class="fa fa-plus"></i></button>
+          <button class="btn btn-primary btn-sm" (click)="add(security)" ><i class="fa fa-plus"></i> Создать</button>
         </td>
         <td>
           <strong>{{security.dataId}}</strong> / {{security.title}}

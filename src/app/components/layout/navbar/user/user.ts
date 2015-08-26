@@ -12,7 +12,7 @@ import {appDirectives, angularDirectives} from 'app/directives/directives';
 let template = require('./user.html');
 
 @Component({
-  selector: '.user-navbar',
+  selector: '.userService-navbar',
 })
 @View({
   directives: [angularDirectives, appDirectives],

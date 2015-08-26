@@ -18,14 +18,22 @@ export class Subscription {
 export class SubscriptionService {
   subscriptions:Rx.Subject<Array<Subscription>>;
 
-  constructor(public api:ApiService, public user:UserService) {
+  constructor(public api:ApiService, public userService:UserService) {
     this.subscriptions = new Rx.BehaviorSubject<Array<Subscription>>();
-    this.user.currentUserObservable.subscribe((user) => {
-      this.api.request('get', `users/${user.id}/subscriptions`)
-        .subscribe((subscriptions) => {
-          this.subscriptions.onNext(subscriptions);
-        })
+    this.userService.currentUserObservable.subscribe((user) => {
+      this.updateSubscriptions();
     });
+  }
+
+  updateSubscriptions() {
+    let user = this.userService.currentUser;
+    if (!user){
+      this.subscriptions.onNext([]);
+    }
+    this.api.request('get', `users/${user.id}/subscriptions`)
+      .subscribe((subscriptions) => {
+        this.subscriptions.onNext(subscriptions);
+      })
   }
 
   save(subscription:Subscription) {

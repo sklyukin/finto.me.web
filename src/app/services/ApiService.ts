@@ -5,7 +5,7 @@ import {bind, Http, Injectable} from 'angular2/angular2';
 const BASE_URL = 'http://localhost:3000/api/';
 @Injectable()
 export class ApiService {
-  //user: UserService;
+  //userService: UserService;
   constructor(public http:Http) {
 
   }
