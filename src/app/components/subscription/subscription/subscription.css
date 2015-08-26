@@ -1,3 +1,6 @@
+td{
+  vertical-align: middle;
+}
 .input-percent-change{
   max-width: 8em;
 }

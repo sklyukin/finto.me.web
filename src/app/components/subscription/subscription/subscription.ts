@@ -2,7 +2,7 @@
 
 import {Component, View, ViewEncapsulation, ControlGroup, NgIf} from 'angular2/angular2';
 import {appDirectives, angularDirectives} from 'app/directives/directives';
-import {SubscriptionService} from 'app/services/SubscriptionService'
+import {SubscriptionService, Subscription} from 'app/services/SubscriptionService'
 
 let template = require('./subscription.html');
 let style = require('./subscription.css');
@@ -17,13 +17,21 @@ let style = require('./subscription.css');
   template: template,
   styles: [style]
 })
-export class Subscription {
-  subscription:Object;
+export class SubscriptionComponent {
+  subscription:Subscription;
 
   constructor(public subscriptionService:SubscriptionService) {
   }
 
-  save(subscription){
-    this.subscriptionService.save(subscription);
+  save() {
+    this.subscriptionService.save(this.subscription);
+  }
+
+  remove() {
+    this.subscriptionService.remove(this.subscription)
+      .subscribe(() => {
+        console.log('removed');
+        this.subscriptionService.updateSubscriptions();
+      })
   }
 }

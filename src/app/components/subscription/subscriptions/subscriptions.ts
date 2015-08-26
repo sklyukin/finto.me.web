@@ -3,18 +3,21 @@
 import {Component, View, ViewEncapsulation, ControlGroup, NgFor} from 'angular2/angular2';
 import {SubscriptionService} from 'app/services/SubscriptionService'
 import {appDirectives, angularDirectives} from 'app/directives/directives';
-import {Subscription} from '../subscription/subscription';
+import {SubscriptionComponent} from '../subscription/subscription';
 
 let template = require('./subscriptions.html');
+let style = require('./subscriptions.css');
 
 @Component({
   selector: 'subscriptions',
 })
 @View({
-  directives: [angularDirectives, appDirectives, NgFor, Subscription],
+  directives: [angularDirectives, appDirectives, NgFor, SubscriptionComponent],
   encapsulation: ViewEncapsulation.EMULATED,
-  template: template
+  template: template,
+  styles: [style]
 })
+
 export class Subscriptions {
   subscriptions:Array<Object>;
 

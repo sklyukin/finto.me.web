@@ -29,7 +29,14 @@ export class ApiService {
         query = this.http[method](finalUrl, JSON.stringify(data), options);
         break;
     }
-    return query.toRx().map(result => result.json());
+    return query.toRx().map( result => {
+      let text = result.text();
+      //e.g. empty result can be returned for "delete"
+      if (text === ''){
+        return {};
+      }
+      return result.json()
+    });
   }
 
 

@@ -39,6 +39,9 @@ export class SubscriptionService {
   save(subscription:Subscription) {
     return this.api.request('put', `Subscriptions`, subscription);
   }
+  remove(subscription:Subscription) {
+    return this.api.request('delete', `Subscriptions/${subscription.id}`);
+  }
 }
 
 // export our injectables for this module

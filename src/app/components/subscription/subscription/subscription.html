@@ -16,10 +16,15 @@
   {{subscription.state.lastInformedValue}}
 </td>
 <td>
-  <button class="btn btn-sm btn-link" (click)="subscription.edit = true" *ng-if="!subscription.edit"><i
-    class="fa fa-pencil-square-o"></i> Изменить
-  </button>
-  <button class="btn btn-sm btn-success" (click)="subscription.edit = false; save(subscription);"
+  <div *ng-if="!subscription.edit">
+    <button class="btn btn-sm btn-link" (click)="subscription.edit = true"><i
+      class="fa fa-pencil-square-o"></i> Изменить
+    </button>
+    <button class="btn btn-sm btn-danger" (click)="remove()">
+      <i class="fa fa-times"></i> Удалить
+    </button>
+  </div>
+  <button class="btn btn-sm btn-success" (click)="subscription.edit = false; save();"
           *ng-if="subscription.edit"><i class="fa fa-floppy-o"></i> Сохранить
   </button>
 </td>
