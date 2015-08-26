@@ -10,7 +10,7 @@ class JwtData {
   userId:String
 }
 
-class User {
+export class User {
   id:String;
   firstName:String;
   lastName:String
@@ -23,7 +23,7 @@ export class UserService {
   currentUserObservable:Rx.Subject<User>;
 
   constructor(public http:Http, public api:ApiService, public router:Router) {
-    this.currentUserObservable = new Rx.Subject<User>();
+    this.currentUserObservable = new Rx.BehaviorSubject<User>();
 
     this.parseJwtCache();
 
