@@ -58,12 +58,15 @@ let styles = require('./app.css');
             <li class="nav-item active">
               <a [router-link]=" ['/home'] "class="nav-link">Главная</a>
             </li>
+            <li class="nav-item active">
+              <a [router-link]=" ['/home'] "class="nav-link">Главная</a>
+            </li>
         </ul>
         <ul class="nav navbar-nav pull-right">
-            <li class="user-navbar nav-item"></li>
             <li class="nav-item" *ng-if="!userService.currentUser">
               <a [router-link]=" ['/login'] "class="nav-link">Войти</a>
             </li>
+            <li class="user-navbar nav-item"></li>
             <li class="nav-item" *ng-if="userService.currentUser">
               <a href="#" class="nav-link" (click)="userService.logout()">Выйти</a>
             </li>

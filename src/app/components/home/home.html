@@ -2,13 +2,16 @@
   <subscriptions *ng-if="userService.currentUser"></subscriptions>
   <div *ng-if="!userService.currentUser">
     <br>
+
     <h1 class="text-center">Биржевые уведомления</h1>
     <br>
+
     <div class="alert alert-info">
-      Подписывайтесь на необходимые финансовые инструменты (курсы валюты, акций, индексов и т.д) и получайте
-      email и push-уведомления на телефон.
+      Подписывайтесь на необходимые финансовые инструменты (<strong>курсы валюты, акций, индексов </strong> и т.д) и получайте
+      <strong>email</strong> и <strong>push</strong>-уведомления на телефон.
     </div>
-    <div>
-    </div>
+    <button [router-link]=" ['/login']" class="btn btn-primary btn-block btn-lg btn-register">
+      Зарегистрироваться
+    </button>
   </div>
 </div>

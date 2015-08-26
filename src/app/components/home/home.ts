@@ -7,6 +7,7 @@ import {Subscriptions} from '../subscription/subscriptions/subscriptions';
 import {UserService} from 'app/services/UserService';
 
 let template = require('./home.html');
+let style = require('./home.css');
 
 @Component({
   selector: 'home'
@@ -14,7 +15,8 @@ let template = require('./home.html');
 @View({
   directives: [ angularDirectives, appDirectives, Subscriptions, NgIf],
   encapsulation: ViewEncapsulation.EMULATED,
-  template: template
+  template: template,
+  styles: [style]
 })
 export class Home {
   constructor(public userService: UserService) {
