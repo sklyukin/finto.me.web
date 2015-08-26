@@ -1,11 +1,11 @@
-/// <reference path="../../../typings/_custom.d.ts" />
+/// <reference path="../../../../typings/_custom.d.ts" />
 
 /*
  * Angular 2
  */
 import {Component, View, ViewEncapsulation, ControlGroup} from 'angular2/angular2';
 import {FormBuilder, Validators} from 'angular2/forms';
-import {UserService} from '../../services/UserService'
+import {UserService} from 'app/services/UserService'
 
 /*
  * Directives
@@ -34,8 +34,8 @@ export class Login {
 
   constructor(fb:FormBuilder, public user: UserService) {
     this.loginForm = fb.group({
-      email: ['stas.msu@gmail.com', Validators.required],
-      password: ['stan', Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 

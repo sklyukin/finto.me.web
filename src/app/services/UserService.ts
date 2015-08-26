@@ -60,6 +60,11 @@ export class UserService {
       });
   }
 
+  logout() {
+    this._setJwtData(null);
+    this.currentUserObservable.onNext(null);
+  }
+
   requestUser() {
     let userId = this.jwtData.userId;
     let observer = this.api.request('get', `users/${userId}`);
@@ -72,7 +77,11 @@ export class UserService {
 
   _setJwtData(jwtData) {
     this.jwtData = jwtData;
-    localStorage.setItem('jwt', JSON.stringify(jwtData));
+    if (jwtData) {
+      localStorage.setItem('jwt', JSON.stringify(jwtData));
+    } else {
+      localStorage.removeItem('jwt');
+    }
   }
 }
 

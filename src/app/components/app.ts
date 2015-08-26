@@ -14,7 +14,7 @@ import {routerDirectives} from 'angular2/router';
 import {appDirectives} from '../directives/directives';
 import {UserService} from 'app/services/UserService';
 
-import {Login} from './login/login';
+import {Login} from './user/login/login';
 import {Home} from './home/home';
 import {SubscriptionAdd} from './subscription/subscription-add/subscription-add';
 import {UserNavbar} from './layout/navbar/user/user';
@@ -63,6 +63,9 @@ let styles = require('./app.css');
             <li class="user-navbar nav-item"></li>
             <li class="nav-item" *ng-if="!userService.currentUser">
               <a [router-link]=" ['/login'] "class="nav-link">Войти</a>
+            </li>
+            <li class="nav-item" *ng-if="userService.currentUser">
+              <a href="#" class="nav-link" (click)="userService.logout()">Выйти</a>
             </li>
         </ul>
       </div>
