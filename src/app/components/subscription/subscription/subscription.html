@@ -2,11 +2,24 @@
   {{subscription.dataId}}
 </td>
 <td>
-  {{subscription.options.percentChange}}%
+  <span *ng-if="!subscription.edit">{{subscription.options.percentChange}}%</span>
+
+  <div class="input-group input-percent-change" *ng-if="subscription.edit">
+    <span class="input-group-addon">%</span>
+    <input class="form-control"
+           [(ng-model)]="subscription.options.percentChange" type="number" min="0.1"
+           required step="0.1">
+  </div>
+
 </td>
 <td>
   {{subscription.state.lastInformedValue}}
 </td>
 <td>
-  <button class="btn btn-sm btn-default"><i class="fa fa-pencil-square-o"></i> Изменить</button>
+  <button class="btn btn-sm btn-link" (click)="subscription.edit = true" *ng-if="!subscription.edit"><i
+    class="fa fa-pencil-square-o"></i> Изменить
+  </button>
+  <button class="btn btn-sm btn-success" (click)="subscription.edit = false; save(subscription);"
+          *ng-if="subscription.edit"><i class="fa fa-floppy-o"></i> Сохранить
+  </button>
 </td>

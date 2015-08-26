@@ -5,14 +5,25 @@ import {ApiService} from './ApiService';
 import {Router} from 'angular2/router';
 import * as Rx from 'rx';
 
+class JwtData {
+  id:String;
+  userId:String
+}
+
+class User {
+  id:String;
+  firstName:String;
+  lastName:String
+}
+
 @Injectable()
 export class UserService {
-  jwtData:Object;
-  currentUser:Object;
-  currentUserObservable: Rx.Subject<Object>;
+  jwtData:JwtData;
+  currentUser:User;
+  currentUserObservable:Rx.Subject<User>;
 
   constructor(public http:Http, public api:ApiService, public router:Router) {
-    this.currentUserObservable = new Rx.Subject<Object>();
+    this.currentUserObservable = new Rx.Subject<User>();
 
     this.parseJwtCache();
 
