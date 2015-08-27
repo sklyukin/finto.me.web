@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/_custom.d.ts" />
 
-import {Component, View, ViewEncapsulation, NgIf} from 'angular2/angular2';
+import {Component, View, ViewEncapsulation} from 'angular2/angular2';
 
 import {appDirectives, angularDirectives} from 'app/directives/directives';
 import {Subscriptions} from '../subscription/subscriptions/subscriptions';
@@ -13,7 +13,7 @@ let style = require('./home.css');
   selector: 'home'
 })
 @View({
-  directives: [ angularDirectives, appDirectives, Subscriptions, NgIf],
+  directives: [ angularDirectives, appDirectives, Subscriptions],
   encapsulation: ViewEncapsulation.EMULATED,
   template: template,
   styles: [style]

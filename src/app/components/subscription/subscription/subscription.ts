@@ -1,6 +1,6 @@
 /// <reference path="../../../../typings/_custom.d.ts" />
 
-import {Component, View, ViewEncapsulation, ControlGroup, NgIf} from 'angular2/angular2';
+import {Component, View, ViewEncapsulation, ControlGroup} from 'angular2/angular2';
 import {appDirectives, angularDirectives} from 'app/directives/directives';
 import {SubscriptionService, Subscription} from 'app/services/SubscriptionService'
 
@@ -12,7 +12,7 @@ let style = require('./subscription.css');
   properties: ['subscription']
 })
 @View({
-  directives: [angularDirectives, appDirectives, NgIf],
+  directives: [angularDirectives, appDirectives],
   encapsulation: ViewEncapsulation.EMULATED,
   template: template,
   styles: [style]
