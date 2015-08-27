@@ -3,6 +3,8 @@
 # Logs
 logs
 *.log
+# Config
+*.local.js*
 
 # Runtime data
 pids

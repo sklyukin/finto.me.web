@@ -2,12 +2,13 @@
 
 import {bind, Http, Injectable} from 'angular2/angular2';
 
-export const API_SERVER_URL = 'http://localhost:3000';
+import {Config} from 'app/config/Config';
+export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
+
 const API_BASE_URL = `${API_SERVER_URL}/api/`;
 
 @Injectable()
 export class ApiService {
-  //userService: UserService;
   constructor(public http:Http) {
 
   }
