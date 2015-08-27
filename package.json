@@ -11,6 +11,7 @@
     "clean": "rm -rf node_modules && rm -rf tsd_typings",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 3100 --host 0.0.0.0",
+    "prod": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 80 --host 0.0.0.0",
     "env:dev": "NODE_ENV=development",
     "env:prod": "NODE_ENV=production",
     "webdriver-update": "webdriver-manager update",
