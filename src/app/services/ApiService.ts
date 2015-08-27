@@ -2,7 +2,9 @@
 
 import {bind, Http, Injectable} from 'angular2/angular2';
 
-const BASE_URL = 'http://localhost:3000/api/';
+export const API_SERVER_URL = 'http://localhost:3000';
+const API_BASE_URL = `${API_SERVER_URL}/api/`;
+
 @Injectable()
 export class ApiService {
   //userService: UserService;
@@ -19,7 +21,7 @@ export class ApiService {
         Authorization: token
       }
     };
-    let finalUrl = `${BASE_URL}${url}`;
+    let finalUrl = `${API_BASE_URL}${url}`;
     let query;
     switch (method) {
       case 'get':
@@ -29,10 +31,10 @@ export class ApiService {
         query = this.http[method](finalUrl, JSON.stringify(data), options);
         break;
     }
-    return query.toRx().map( result => {
+    return query.toRx().map(result => {
       let text = result.text();
       //e.g. empty result can be returned for "delete"
-      if (text === ''){
+      if (text === '') {
         return {};
       }
       return result.json()

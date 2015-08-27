@@ -1,7 +1,7 @@
 /// <reference path="../../typings/_custom.d.ts" />
 
 import {bind, Injectable, Http} from 'angular2/angular2';
-import {ApiService} from './ApiService';
+import {ApiService, API_SERVER_URL} from './ApiService';
 import {Router} from 'angular2/router';
 import * as Rx from 'rx';
 
@@ -18,36 +18,51 @@ export class User {
 
 @Injectable()
 export class UserService {
+  FACEBOOK_AUTH_URL:String;
   jwtData:JwtData;
   currentUser:User;
   currentUserObservable:Rx.Subject<User>;
 
   constructor(public http:Http, public api:ApiService, public router:Router) {
     this.currentUserObservable = new Rx.BehaviorSubject<User>();
+    this.FACEBOOK_AUTH_URL = `${API_SERVER_URL}/auth/facebook`;
 
-    this.parseJwtCache();
+    //first let's try to get jwt for http, then from cache
+    let params = getSearchParameters();
+    if (params.jwt) {
+      let jwtString = decodeURIComponent(params.jwt);
+      this.validateJwtAndRequestUser(jwtString);
+    }
+    if (!this.jwtData) {
+      this.parseJwtCache();
+    }
 
     this.currentUserObservable.subscribe((user) => {
       this.currentUser = user;
     });
   }
 
-  parseJwtCache() {
-    let str = localStorage.getItem('jwt');
-    if (str) {
+  parseJwtCache():boolean {
+    let jwtString = localStorage.getItem('jwt');
+    return this.validateJwtAndRequestUser(jwtString);
+  }
+
+  validateJwtAndRequestUser(jwtString:String):boolean {
+    console.log(jwtString);
+    let valid = false;
+    if (jwtString) {
       try {
-        let jwt = JSON.parse(str);
+        let jwt = JSON.parse(jwtString);
         if (jwt.userId) {
-          this.jwtData = jwt;
+          this._setJwtData(jwt);
+          valid = true;
+          this.requestUser();
         }
       }
       finally {
-
       }
     }
-    if (this.jwtData) {
-      this.requestUser();
-    }
+    return valid;
   }
 
   login(email, password) {
@@ -89,7 +104,24 @@ export class UserService {
   }
 }
 
+var params = getSearchParameters();
 // export our injectables for this module
 export var userInjectables:Array<any> = [
   bind(UserService).toClass(UserService)
 ];
+
+//can be a separate module
+function getSearchParameters() {
+  var prmstr = window.location.search.substr(1);
+  return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+}
+
+function transformToAssocArray(prmstr) {
+  var params = {};
+  var prmarr = prmstr.split("&");
+  for (var i = 0; i < prmarr.length; i++) {
+    var tmparr = prmarr[i].split("=");
+    params[tmparr[0]] = tmparr[1];
+  }
+  return params;
+}

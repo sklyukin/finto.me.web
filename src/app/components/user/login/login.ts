@@ -33,7 +33,7 @@ export class Login {
   loginForm:ControlGroup;
   error:String;
 
-  constructor(fb:FormBuilder, public user:UserService) {
+  constructor(fb:FormBuilder, public userService:UserService) {
     this.loginForm = fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -43,7 +43,7 @@ export class Login {
   onSubmit(event, form) {
     if (form.email && form.password) {
       event.preventDefault();
-      this.user.login(form.email, form.password)
+      this.userService.login(form.email, form.password)
         .subscribe((jwtData) => {
           this.error = jwtData.error;
         })
