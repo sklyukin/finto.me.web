@@ -37,6 +37,7 @@
   "dependencies": {
     "angular2": "2.0.0-alpha.34",
     "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
     "reflect-metadata": "^0.1.0",
     "rtts_assert": "2.0.0-alpha.34",
     "rx": "^2.5.3",
