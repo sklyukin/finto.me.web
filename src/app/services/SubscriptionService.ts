@@ -28,7 +28,7 @@ export class SubscriptionService {
   updateSubscriptions() {
     let user = this.userService.currentUser;
     if (!user){
-      this.subscriptions.onNext([]);
+      return this.subscriptions.onNext([]);
     }
     this.api.request('get', `users/${user.id}/subscriptions`)
       .subscribe((subscriptions) => {
