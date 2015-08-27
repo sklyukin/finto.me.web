@@ -2,7 +2,7 @@
 /*
  * Angular 2
  */
-import {coreDirectives, formDirectives} from 'angular2/angular2';
+import {coreDirectives, formDirectives, NgIf, NgFor} from 'angular2/angular2';
 import {routerDirectives} from 'angular2/router';
 
 /*
@@ -22,6 +22,8 @@ export var angularDirectives: Array<any> = [
 
   // Angular's form directives
   formDirectives,
+
+  NgIf, NgFor,
 
   // Angular's router
   routerDirectives

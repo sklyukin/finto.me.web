@@ -2,15 +2,25 @@
   <br>
   <h1 class="text-center">Войти</h1>
   <br>
-  <form [ng-form-model]="loginForm" (submit)="onSubmit($event, loginForm.value)">
-    <div class="form-group">
-      <label >Email</label>
-      <input type="text" class="form-control" [ng-form-control]="loginForm.controls['email']">
+  <div class="row">
+    <div class="col-sm-6">
+      <a class="btn btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
     </div>
-    <div class="form-group">
-      <label>Пароль</label>
-      <input type="password" class="form-control" [ng-form-control]="loginForm.controls['password']">
+    <div class="col-sm-6">
+      <form [ng-form-model]="loginForm" (submit)="onSubmit($event, loginForm.value)">
+        <div class="form-group">
+          <label >Email</label>
+          <input type="text" class="form-control" [ng-form-control]="loginForm.controls['email']">
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" class="form-control" [ng-form-control]="loginForm.controls['password']">
+        </div>
+        <div class="alert alert-danger text-center" *ng-if="error">Неправильный логин или пароль</div>
+        <div>
+          <button type="submit" class="btn btn-default btn-block">Войти</button>
+        </div>
+      </form>
     </div>
-    <button type="submit" class="btn btn-primary">Войти</button>
-  </form>
+  </div>
 </div>

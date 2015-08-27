@@ -51,13 +51,17 @@ export class UserService {
   }
 
   login(email, password) {
-    return this.api.request('post', 'users/login', {email, password})
-      .subscribe((jwtData) => {
+    let query = this.api.request('post', 'users/login', {email, password});
+
+    query.subscribe((jwtData) => {
+      if (jwtData && !jwtData.error) {
         this._setJwtData(jwtData);
         this.requestUser().subscribe(() => {
           this.router.navigate('/');
         })
-      });
+      }
+    });
+    return query;
   }
 
   logout() {
