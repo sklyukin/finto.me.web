@@ -48,7 +48,6 @@ export class UserService {
   }
 
   validateJwtAndRequestUser(jwtString:String):boolean {
-    console.log(jwtString);
     let valid = false;
     if (jwtString) {
       try {
