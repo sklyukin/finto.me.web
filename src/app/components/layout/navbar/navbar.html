@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand hidden-xs-down" [router-link]=" ['/home'] ">finto.me</a>
+    <a class="navbar-brand hidden-sm-up" *ng-if="!userService.currentUser" [router-link]=" ['/home'] ">finto.me</a>
+    <ul class="nav navbar-nav">
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+      <li class="nav-item" *ng-if="!userService.currentUser">
+        <a [router-link]=" ['/login'] " class="nav-link">Войти</a>
+      </li>
+      <li class="user-navbar nav-item"></li>
+      <li class="nav-item" *ng-if="userService.currentUser">
+        <a href="#" class="nav-link" (click)="userService.logout()">Выйти</a>
+      </li>
+    </ul>
+  </div>
+</nav>

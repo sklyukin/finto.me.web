@@ -12,12 +12,11 @@ import {coreDirectives, formDirectives} from 'angular2/angular2';
 import {routerDirectives} from 'angular2/router';
 // Import all of our custom app directives
 import {appDirectives} from '../directives/directives';
-import {UserService} from 'app/services/UserService';
 
 import {Login} from './user/login/login';
 import {Home} from './home/home';
 import {SubscriptionAdd} from './subscription/subscription-add/subscription-add';
-import {UserNavbar} from './layout/navbar/user/user';
+import {Navbar} from './layout/navbar/navbar';
 
 
 // Use webpack's `require` to get files as a raw string using raw-loader
@@ -45,28 +44,14 @@ let styles = require('./app.css');
 
     // Our collection of directives from /directives
     appDirectives,
-    [UserNavbar]
+    [Navbar]
   ],
   // include our .css file
   styles: [styles],
   template: `
     <header>
-      <nav class="navbar navbar-dark bg-primary">
-      <div class="container">
-        <a class="navbar-brand" [router-link]=" ['/home'] ">finto.me</a>
-         <ul class="nav navbar-nav">
-        </ul>
-        <ul class="nav navbar-nav pull-right">
-            <li class="nav-item" *ng-if="!userService.currentUser">
-              <a [router-link]=" ['/login'] "class="nav-link">Войти</a>
-            </li>
-            <li class="user-navbar nav-item"></li>
-            <li class="nav-item" *ng-if="userService.currentUser">
-              <a href="#" class="nav-link" (click)="userService.logout()">Выйти</a>
-            </li>
-        </ul>
-      </div>
-      </nav>
+      <navbar></navbar>
+    </header>
     <main>
       <router-outlet></router-outlet>
     </main>
@@ -82,7 +67,7 @@ let styles = require('./app.css');
   {path: '/subscription/add', as: 'subscription-add', component: SubscriptionAdd}
 ])
 export class App {
-  constructor(public userService:UserService) {
+  constructor() {
   }
 }
 

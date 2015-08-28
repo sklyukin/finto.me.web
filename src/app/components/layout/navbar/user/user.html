@@ -1,4 +1,4 @@
-<a href="/" class="nav-link" *ng-if="userService.currentUser">
+<span class="nav-link" *ng-if="userService.currentUser">
   <span>{{userService.currentUser.displayName}}</span>
   <span *ng-if="!userService.currentUser.displayName">{{userService.currentUser.email}}</span>
-</a>
+</span>
