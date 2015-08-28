@@ -19,6 +19,7 @@ export class User {
 @Injectable()
 export class UserService {
   FACEBOOK_AUTH_URL:String;
+  GOOGLE_AUTH_URL:String;
   jwtData:JwtData;
   currentUser:User;
   currentUserObservable:Rx.Subject<User>;
@@ -26,6 +27,7 @@ export class UserService {
   constructor(public http:Http, public api:ApiService, public router:Router) {
     this.currentUserObservable = new Rx.BehaviorSubject<User>();
     this.FACEBOOK_AUTH_URL = `${API_SERVER_URL}/auth/facebook`;
+    this.GOOGLE_AUTH_URL = `${API_SERVER_URL}/auth/google`;
 
     //first let's try to get jwt for http, then from cache
     let params = getSearchParameters();
