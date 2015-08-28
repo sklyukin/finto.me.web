@@ -53,11 +53,8 @@ let styles = require('./app.css');
     <header>
       <nav class="navbar navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand">Уведомления</a>
+        <a class="navbar-brand" [router-link]=" ['/home'] ">finto.me</a>
          <ul class="nav navbar-nav">
-            <li class="nav-item active">
-              <a [router-link]=" ['/home'] "class="nav-link">Главная</a>
-            </li>
         </ul>
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item" *ng-if="!userService.currentUser">
@@ -85,7 +82,7 @@ let styles = require('./app.css');
   {path: '/subscription/add', as: 'subscription-add', component: SubscriptionAdd}
 ])
 export class App {
-  constructor(public userService: UserService) {
+  constructor(public userService:UserService) {
   }
 }
 
