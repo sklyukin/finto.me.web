@@ -57,6 +57,7 @@ export class UserService {
         if (jwt.userId) {
           this._setJwtData(jwt);
           valid = true;
+          this.setUserFromCache();
           this.requestUser();
         }
       }
@@ -85,10 +86,25 @@ export class UserService {
     this.currentUserObservable.onNext(null);
   }
 
+  //can be called before requestUser to decrease app latency
+  setUserFromCache(){
+    let userJSON = localStorage.getItem('currentUser');
+    if (userJSON){
+      try{
+        let user = JSON.parse(userJSON);
+        this.currentUserObservable.onNext(user);
+      }
+      finally{
+
+      }
+    }
+  }
+
   requestUser() {
     let userId = this.jwtData.userId;
     let observer = this.api.request('get', `users/${userId}`);
     observer.subscribe((user) => {
+      localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserObservable.onNext(user);
     });
 
