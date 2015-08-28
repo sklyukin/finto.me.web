@@ -3,7 +3,7 @@
 
   <h1 class="text-center">Добавить уведомление</h1>
   <br>
-  <input #securityFilter placeholder="Поиск" type="text" class="form-control" (keyup)="search($event, $value)">
+  <input [autofocus] #securityFilter placeholder="Поиск" type="text" class="form-control" (keyup)="search($event, $value)">
   <br>
 
   <div class="table-responsive">
