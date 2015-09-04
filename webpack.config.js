@@ -98,6 +98,8 @@ var config = {
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json' },
 
+      { test: /\.scss$/,  loader: 'raw!sass' },
+
       // Support for CSS as raw text
       { test: /\.css$/,   loader: 'raw' },
 

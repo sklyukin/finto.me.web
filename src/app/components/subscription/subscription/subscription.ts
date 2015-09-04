@@ -3,6 +3,7 @@
 import {Component, View, ViewEncapsulation, ControlGroup} from 'angular2/angular2';
 import {appDirectives, angularDirectives} from 'app/directives/directives';
 import {SubscriptionService, Subscription} from 'app/services/SubscriptionService'
+import {UserService} from 'app/services/UserService';
 
 let template = require('./subscription.html');
 let style = require('./subscription.css');
@@ -20,7 +21,7 @@ let style = require('./subscription.css');
 export class SubscriptionComponent {
   subscription:Subscription;
 
-  constructor(public subscriptionService:SubscriptionService) {
+  constructor(public subscriptionService:SubscriptionService, public userService: UserService) {
   }
 
   save() {
@@ -34,5 +35,8 @@ export class SubscriptionComponent {
           this.subscriptionService.updateSubscriptions();
         })
     }
+  }
+  editingWithPayedPlan(){
+    return this.subscription.edit && this.userService.hasPayedPlan()
   }
 }

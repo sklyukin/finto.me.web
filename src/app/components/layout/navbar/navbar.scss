@@ -1,0 +1,17 @@
+.navbar .navbar-nav.pull-right li {
+  margin-left: 1rem;
+}
+
+.navbar-brand {
+  text-transform: uppercase;
+  a {
+    color: white;
+    cursor: pointer;
+    &:hover, &:active, &:focus, &:visited{
+      text-decoration: none;
+    }
+  }
+}
+.label{
+  vertical-align: top;
+}

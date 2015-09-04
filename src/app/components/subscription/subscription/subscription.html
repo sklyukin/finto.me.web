@@ -16,6 +16,17 @@
   {{subscription.state.lastInformedValue}}
 </td>
 <td>
+  <span *ng-if="!editingWithPayedPlan()">
+    {{subscription.type}}
+  </span>
+  <div *ng-if="editingWithPayedPlan()">
+    <select class="form-control" [(ng-model)]="subscription.type">
+      <option>email</option>
+      <option>sms</option>
+    </select>
+  </div>
+</td>
+<td>
   <div *ng-if="!subscription.edit">
     <button class="btn btn-sm btn-link" (click)="subscription.edit = true"><i
       class="fa fa-pencil-square-o"></i> Изменить

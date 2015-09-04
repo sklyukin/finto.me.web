@@ -13,7 +13,8 @@ class JwtData {
 export class User {
   id:String;
   firstName:String;
-  lastName:String
+  lastName:String;
+  payedTill: Date;
 }
 
 @Injectable()
@@ -42,6 +43,10 @@ export class UserService {
     this.currentUserObservable.subscribe((user) => {
       this.currentUser = user;
     });
+  }
+
+  hasPayedPlan(){
+   return this.currentUser && (this.currentUser.payedTill > new Date());
   }
 
   parseJwtCache():boolean {
@@ -104,6 +109,7 @@ export class UserService {
     let userId = this.jwtData.userId;
     let observer = this.api.request('get', `users/${userId}`);
     observer.subscribe((user) => {
+      user.payedTill = user.payedTill ? new Date(user.payedTill) : null;
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserObservable.onNext(user);
     });

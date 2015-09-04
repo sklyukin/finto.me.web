@@ -6,7 +6,7 @@ import {UserService} from 'app/services/UserService';
 import {UserNavbar} from './user/user';
 
 let template = require('./navbar.html');
-let style = require('./navbar.css');
+let style = require('./navbar.scss');
 
 @Component({
   selector: 'navbar'

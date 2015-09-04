@@ -1,7 +1,8 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand hidden-xs-down" [router-link]=" ['/home'] ">finto.me</a>
-    <a class="navbar-brand hidden-sm-up" *ng-if="!userService.currentUser" [router-link]=" ['/home'] ">finto.me</a>
+    <div class="navbar-brand"><a [router-link]=" ['/home']">finto.me</a>
+      <span *ng-if="userService.hasPayedPlan()" class="label label-success">Premium</span>
+    </div>
     <ul class="nav navbar-nav">
     </ul>
     <ul class="nav navbar-nav pull-right">
