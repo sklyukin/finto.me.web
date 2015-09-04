@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/sklyukin/finto.me.web/issues"
   },
-  "homepage": "finto.me",
+  "homepage": "http://finto.me",
   "dependencies": {
     "angular2": "2.0.0-alpha.34",
     "jquery": "^2.1.4",

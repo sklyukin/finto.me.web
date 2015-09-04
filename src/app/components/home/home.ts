@@ -7,7 +7,7 @@ import {Subscriptions} from '../subscription/subscriptions/subscriptions';
 import {UserService} from 'app/services/UserService';
 
 let template = require('./home.html');
-let style = require('./home.css');
+let style = require('./home.scss');
 
 @Component({
   selector: 'home'
