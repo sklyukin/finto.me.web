@@ -5,18 +5,30 @@
   min-height: 5rem;
   display: flex;
   align-items: center;
-  color: #666;
+  $footer-color: #666;
+  color: $footer-color;
+  a {
+    color: $footer-color;
+  }
   ul {
     margin: 0;
-    li{
+    li {
       display: inline;
       &:not(:first-child) {
         &:before {
           content: '|';
         }
       }
-      span{
+      & > a, & > span {
         padding: 0 1rem;
+      }
+      a:hover {
+        cursor: pointer;
+        //angular 2 bug / workaround with space
+        text-decoration: none;
+        &.hover-underline, .hover-underline {
+          text-decoration: underline;
+        }
       }
     }
   }

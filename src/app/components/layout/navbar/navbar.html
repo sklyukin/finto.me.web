@@ -4,6 +4,9 @@
       <span *ng-if="userService.hasPayedPlan()" class="label label-success">Premium</span>
     </div>
     <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a [router-link]=" ['/prices'] " class="nav-link">Цены</a>
+      </li>
     </ul>
     <ul class="nav navbar-nav pull-right">
       <li class="nav-item" *ng-if="!userService.currentUser">
