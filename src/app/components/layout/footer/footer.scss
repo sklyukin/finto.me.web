@@ -6,4 +6,18 @@
   display: flex;
   align-items: center;
   color: #666;
+  ul {
+    margin: 0;
+    li{
+      display: inline;
+      &:not(:first-child) {
+        &:before {
+          content: '|';
+        }
+      }
+      span{
+        padding: 0 1rem;
+      }
+    }
+  }
 }
