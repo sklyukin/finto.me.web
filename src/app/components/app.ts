@@ -17,6 +17,7 @@ import {Login} from './user/login/login';
 import {Home} from './home/home';
 import {SubscriptionAdd} from './subscription/subscription-add/subscription-add';
 import {Navbar} from './layout/navbar/navbar';
+import {Footer} from './layout/footer/footer';
 
 
 // Use webpack's `require` to get files as a raw string using raw-loader
@@ -44,20 +45,20 @@ let styles = require('./app.scss');
 
     // Our collection of directives from /directives
     appDirectives,
-    [Navbar]
+    [Navbar, Footer]
   ],
   // include our .css file
   styles: [styles],
   template: `
-    <header>
-      <navbar></navbar>
-    </header>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <footer class="container-fluid bg-faded">
-      <!--Финансовые уведомления 2015-->
+    <div class="full-page-height-container">
+        <header>
+          <navbar></navbar>
+        </header>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+    </div>
+    <footer>
     </footer>
   `
 })
