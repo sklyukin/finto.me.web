@@ -56,7 +56,7 @@ let styles = require('./app.scss');
       <router-outlet></router-outlet>
     </main>
 
-    <footer class="container">
+    <footer class="container-fluid bg-faded">
       <!--Финансовые уведомления 2015-->
     </footer>
   `

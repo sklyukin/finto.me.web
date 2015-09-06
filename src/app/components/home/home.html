@@ -1,28 +1,32 @@
-<div class="container">
-  <subscriptions *ng-if="userService.currentUser"></subscriptions>
-  <div *ng-if="!userService.currentUser">
+<subscriptions *ng-if="userService.currentUser" class="container"></subscriptions>
+<div *ng-if="!userService.currentUser" class="text-center">
 
-    <div class="home-header-block">
-      <h1 class="text-center">Биржевые уведомления</h1>
+  <div class="home-header-block">
+    <h1>Биржевые уведомления</h1>
 
-      <div class="text-center btn-register-top">
-        <button [router-link]=" ['/login']" class="btn btn-primary">Зарегистрироваться</button>
-      </div>
+    <div class="btn-register-top">
+      <button [router-link]=" ['/login']" class="btn btn-primary">Зарегистрироваться</button>
     </div>
-    <h2 class="text-center">
+  </div>
+
+  <div class="container-fluid bg-inverse container-center">
+    <h2>
       Курсы валют, акций, индексов, фьючерсов, облигаций
     </h2>
 
-    <div class="txt-info text-center">
+    <div class="txt-info">
       Подписывайтесь на необходимые финансовые инструменты и получайте
       <strong>email, sms </strong> и <strong>push</strong>-уведомления на телефон.
     </div>
     <br>
+  </div>
+
+  <div class="container">
 
     <div class="row">
       <div class="col-lg-6">
 
-        <h2 class="text-center no-bottom-margin">SMS и push-уведомления</h2>
+        <h2 class="no-bottom-margin">SMS и push-уведомления</h2>
 
         <div>
           <img src="/home/iphone5s.png" class="img-responsive img-phone center-block">
@@ -30,7 +34,7 @@
       </div>
 
       <div class="col-lg-6">
-        <h2 class="text-center">Email уведомления</h2>
+        <h2>Email уведомления</h2>
 
         <div>
           <div class="hidden-md-down email-margin">&nbsp;</div>
@@ -38,7 +42,7 @@
         </div>
       </div>
     </div>
-    <div class="text-center">
+    <div>
       <button [router-link]=" ['/login']" class="btn btn-primary btn-lg btn-register-down">
         Зарегистрироваться
       </button>

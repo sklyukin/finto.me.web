@@ -15,10 +15,16 @@ h2{
 .no-bottom-margin{
   margin-bottom: 0;
 }
-.txt-info{
-  font-size: 0.9em;
-  color: #888;
-}
 .email-margin{
   height: 8rem;
+}
+.container-center{
+  background: linear-gradient(#373A3C, #111);
+}
+.txt-info{
+  font-size: 0.9em;
+  color: #aaa;
+  strong{
+    color: darken(#0275d8, 3%);
+  }
 }
