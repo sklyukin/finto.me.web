@@ -7,7 +7,7 @@ import {appDirectives, angularDirectives} from 'app/directives/directives';
 import {Router} from 'angular2/router';
 
 let template = require('./subscription-add.html');
-let style = require('./subscription-add.css');
+let style = require('./subscription-add.scss');
 
 @Component({
   selector: 'subscription-add',

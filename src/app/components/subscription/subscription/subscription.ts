@@ -6,7 +6,7 @@ import {SubscriptionService, Subscription} from 'app/services/SubscriptionServic
 import {UserService} from 'app/services/UserService';
 
 let template = require('./subscription.html');
-let style = require('./subscription.css');
+let style = require('./subscription.scss');
 
 @Component({
   selector: '[subscription-component]',

@@ -20,7 +20,7 @@ import {Navbar} from './layout/navbar/navbar';
 
 
 // Use webpack's `require` to get files as a raw string using raw-loader
-let styles = require('./app.css');
+let styles = require('./app.scss');
 
 /*
  * App Component

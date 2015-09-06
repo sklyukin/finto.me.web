@@ -6,7 +6,7 @@ import {appDirectives, angularDirectives} from 'app/directives/directives';
 import {SubscriptionComponent} from '../subscription/subscription';
 
 let template = require('./subscriptions.html');
-let style = require('./subscriptions.css');
+let style = require('./subscriptions.scss');
 
 @Component({
   selector: 'subscriptions',

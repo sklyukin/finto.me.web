@@ -7,15 +7,15 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 // Node
 var webpack = require('webpack');
 var path = require('path');
-var pkg  = require('./package.json');
+var pkg = require('./package.json');
 
 // Webpack Plugins
 var OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
-var CommonsChunkPlugin   = webpack.optimize.CommonsChunkPlugin;
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var DedupePlugin   = webpack.optimize.DedupePlugin;
-var DefinePlugin   = webpack.DefinePlugin;
-var BannerPlugin   = webpack.BannerPlugin;
+var DedupePlugin = webpack.optimize.DedupePlugin;
+var DefinePlugin = webpack.DefinePlugin;
+var BannerPlugin = webpack.BannerPlugin;
 
 
 /*
@@ -69,7 +69,7 @@ var config = {
 
   resolve: {
     root: __dirname,
-    extensions: ['','.ts','.js','.json'],
+    extensions: ['', '.ts', '.js', '.json'],
     alias: {
       // we can switch between development and production
       // 'angular2': 'node_modules/angular2/ts',
@@ -96,24 +96,34 @@ var config = {
   module: {
     loaders: [
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json' },
+      {test: /\.json$/, loader: 'json'},
 
-      { test: /\.scss$/,  loader: 'raw!sass' },
 
-      // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw' },
+      //// Support for CSS as raw text
+      //{ test: /\.css$/,   loader: 'raw' },
+
+      // support for global scss in src/app folder
+      {test: /src\/css\/.*\.scss$/, loader: 'style!css!sass'},
+
+      //Support scss for angular components
+      {test: /src\/app\/.*\.scss$/, loader: 'raw!sass'},
+
+      //{ test: /subscription\.css$/,   loader: 'raw' },
+      //{ test: /subscription-add\.css$/,   loader: 'raw' },
+
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw' },
+      {test: /\.html$/, loader: 'raw'},
 
       // Support for .ts files.
-      { test: /\.ts$/,    loader: 'typescript-simple?ignoreWarnings[]=2345', exclude: [
-          /\.spec\.ts$/,
-          /\.e2e\.ts$/,
-          /web_modules/,
-          /test/,
-          /node_modules/
-        ]
+      {
+        test: /\.ts$/, loader: 'typescript-simple?ignoreWarnings[]=2345', exclude: [
+        /\.spec\.ts$/,
+        /\.e2e\.ts$/,
+        /web_modules/,
+        /test/,
+        /node_modules/
+      ]
       }
     ],
     noParse: [
@@ -123,7 +133,7 @@ var config = {
 
   // plugins: plugins, // see below
   context: __dirname,
-  stats: { colors: true, reasons: true }
+  stats: {colors: true, reasons: true}
 };
 
 
@@ -174,18 +184,11 @@ var environment_plugins = {
 }//env
 
 
-
-
-
-
-
-
-
 if (NODE_ENV === 'production') {
   // replace filename `.js` with `.min.js`
   config.output.filename = config.output.filename.replace('.js', '.min.js');
   config.output.sourceMapFilename = config.output.sourceMapFilename.replace('.js', '.min.js');
-  commons_chunks_plugins = commons_chunks_plugins.map(function(chunk) {
+  commons_chunks_plugins = commons_chunks_plugins.map(function (chunk) {
     return chunk.filename.replace('.js', '.min.js');
   });
 }
@@ -194,7 +197,7 @@ else if (NODE_ENV === 'development') {
 }
 
 // create CommonsChunkPlugin instance for each config
-var combine_common_chunks = commons_chunks_plugins.map(function(config) {
+var combine_common_chunks = commons_chunks_plugins.map(function (config) {
   return new CommonsChunkPlugin(config);
 });
 
@@ -206,7 +209,7 @@ module.exports = config;
 
 // Helper functions
 function getBanner() {
-  return 'Angular2 Webpack Starter v'+ pkg.version +' by @gdi2990 from @AngularClass';
+  return 'Finto.me';
 }
 
 function root(args) {
