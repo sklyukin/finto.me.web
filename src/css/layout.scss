@@ -1,0 +1,14 @@
+html, body{
+  height: 100%;
+}
+//ensure footer always at the bottom or lower
+app{
+  display: flex;
+  min-height: 100%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+html{
+  overflow-y: scroll;
+}
