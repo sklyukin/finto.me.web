@@ -103,10 +103,10 @@ var config = {
       //{ test: /\.css$/,   loader: 'raw' },
 
       // support for global scss in src/app folder
-      {test: /src\/css\/.*\.scss$/, loader: 'style!css!sass'},
+      {test: /src\/css\/.*\.scss$/, loader: 'style!css!autoprefixer!sass'},
 
       //Support scss for angular components
-      {test: /src\/app\/.*\.scss$/, loader: 'raw!sass'},
+      {test: /src\/app\/.*\.scss$/, loader: 'raw!autoprefixer!sass'},
 
       //{ test: /subscription\.css$/,   loader: 'raw' },
       //{ test: /subscription-add\.css$/,   loader: 'raw' },
