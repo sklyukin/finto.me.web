@@ -1,2 +1,5 @@
-$brand-primary: #000;
+$brand-primary: #111514;
+$brand-secondary: #0275d8;
+$btn-primary-bg: $brand-secondary;
+$link-color: $brand-secondary;
 @import "../../node_modules/bootstrap/scss/bootstrap";
