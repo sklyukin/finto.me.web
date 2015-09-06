@@ -3,7 +3,7 @@
 // Angular 2
 import {bootstrap} from 'angular2/angular2';
 
-require('../css/bootstrap.scss');
+require('../css/main.scss');
 /*
  * Common Injectables
  * our custom helper injectables to configure our app differently using the dependency injection system
