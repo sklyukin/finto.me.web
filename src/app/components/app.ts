@@ -19,6 +19,7 @@ import {SubscriptionAdd} from './subscription/subscription-add/subscription-add'
 import {Navbar} from './layout/navbar/navbar';
 import {Footer} from './layout/footer/footer';
 import {Prices} from './info/prices/prices';
+import {Contacts} from './info/contacts/contacts';
 
 
 // Use webpack's `require` to get files as a raw string using raw-loader
@@ -67,7 +68,8 @@ let styles = require('./app.scss');
   {path: '/', as: 'home', component: Home},
   {path: '/login', as: 'login', component: Login},
   {path: '/prices', as: 'prices', component: Prices},
-  {path: '/subscription/add', as: 'subscription-add', component: SubscriptionAdd}
+  {path: '/subscription/add', as: 'subscription-add', component: SubscriptionAdd},
+  {path: '/contacts', as: 'contacts', component: Contacts}
 ])
 export class App {
   constructor() {

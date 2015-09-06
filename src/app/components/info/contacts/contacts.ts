@@ -3,11 +3,11 @@ import {Component, View, ViewEncapsulation} from 'angular2/angular2';
 
 import {appDirectives, angularDirectives} from 'app/directives/directives';
 
-let template = require('./prices.html');
-let style = require('./prices.scss');
+let template = require('./contacts.html');
+let style = require('./contacts.scss');
 
 @Component({
-  selector: 'prices'
+  selector: 'contacts'
 })
 @View({
   directives: [angularDirectives, appDirectives],
@@ -15,5 +15,5 @@ let style = require('./prices.scss');
   template: template,
   styles: [style]
 })
-export class Prices{
+export class Contacts{
 }
