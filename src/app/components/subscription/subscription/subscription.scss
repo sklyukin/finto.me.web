@@ -1,5 +1,8 @@
 td {
   vertical-align: middle;
+  &:last-child {
+    text-align: right;
+  }
 }
 
 .input-percent-change {
