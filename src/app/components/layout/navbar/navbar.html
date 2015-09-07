@@ -1,6 +1,13 @@
 <nav class="navbar navbar-dark bg-primary">
-  <div class="container">
-    <div class="navbar-brand"><a [router-link]=" ['/home']">finto.me</a>
+  <!--<div class="container">-->
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+    &#9776;
+  </button>
+  <div class="navbar-brand hidden-sm-up"><a [router-link]=" ['/home']">finto.me</a>
+    <span *ng-if="userService.hasPayedPlan()" class="label label-success">Premium</span>
+  </div>
+  <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+    <div class="navbar-brand hidden-xs-down"><a [router-link]=" ['/home']">finto.me</a>
       <span *ng-if="userService.hasPayedPlan()" class="label label-success">Premium</span>
     </div>
     <ul class="nav navbar-nav">
@@ -21,4 +28,5 @@
       </li>
     </ul>
   </div>
+  <!--</div>-->
 </nav>
