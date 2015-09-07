@@ -1,0 +1,12 @@
+{
+  "name": "finto.me",
+  "homepage": "http://finto.me",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/public/bower",
+    "test",
+    "tests"
+  ]
+}
