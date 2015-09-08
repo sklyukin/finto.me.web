@@ -11,7 +11,7 @@
             class="fa fa-google-plus"></i> Google</a>
           <a class="btn btn-block btn-social btn-facebook" href="{{userService.FACEBOOK_AUTH_URL}}"><i
             class="fa fa-facebook"></i> Facebook</a>
-          <button  class="btn btn-info btn-block">Зарегистрироваться через email</button>
+          <button  [router-link]="['/registration']" class="btn btn-info btn-block">Зарегистрироваться через email</button>
         </div>
       </div>
       <div class="col-md-6">

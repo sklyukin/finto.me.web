@@ -1,0 +1,5 @@
+<div class="form-group" [class]="{'has-error' : showErrors && formControl.errors}">
+  <input placeholder="{{label}}" type="{{type}}" class="form-control"
+         [ng-form-control]="formControl">
+  <error [model]="formControl" *ng-if="showErrors"></error>
+</div>

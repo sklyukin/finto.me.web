@@ -14,6 +14,7 @@ import {routerDirectives} from 'angular2/router';
 import {appDirectives} from '../directives/directives';
 
 import {Login} from './user/login/login';
+import {Registration} from './user/registration/registration';
 import {Home} from './home/home';
 import {SubscriptionAdd} from './subscription/subscription-add/subscription-add';
 import {Navbar} from './layout/navbar/navbar';
@@ -67,6 +68,7 @@ let styles = require('./app.scss');
 @RouteConfig([
   {path: '/', as: 'home', component: Home},
   {path: '/login', as: 'login', component: Login},
+  {path: '/registration', as: 'registration', component: Registration},
   {path: '/prices', as: 'prices', component: Prices},
   {path: '/subscription/add', as: 'subscription-add', component: SubscriptionAdd},
   {path: '/contacts', as: 'contacts', component: Contacts}

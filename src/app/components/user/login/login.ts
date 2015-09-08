@@ -22,7 +22,8 @@ export class Login {
   loginForm:ControlGroup;
   error:String;
 
-  constructor(fb:FormBuilder, public userService:UserService) {
+  constructor(public userService:UserService) {
+    let fb = new FormBuilder();
     this.loginForm = fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]

@@ -2,13 +2,14 @@
 /*
  * Angular 2
  */
-import {coreDirectives, formDirectives, NgIf, NgFor} from 'angular2/angular2';
+import {coreDirectives, formDirectives, NgIf, NgFor, CSSClass} from 'angular2/angular2';
 import {routerDirectives} from 'angular2/router';
 
 /*
  * App
  */
 import {Autofocus} from './Autofocus';
+import {FormError} from './form/error/error';
 
 // global App only directives
 export var appDirectives: Array<any> = [
@@ -23,7 +24,7 @@ export var angularDirectives: Array<any> = [
   // Angular's form directives
   formDirectives,
 
-  NgIf, NgFor,
+  NgIf, NgFor, CSSClass,
 
   // Angular's router
   routerDirectives

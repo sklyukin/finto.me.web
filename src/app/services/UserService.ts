@@ -86,6 +86,15 @@ export class UserService {
     return query;
   }
 
+  createUser(data){
+    console.log('going to create user', data);
+    let query = this.api.request('post', 'users', data);
+    query.subscribe( (data) => {
+      console.log(data);
+    });
+    return query;
+  }
+
   logout() {
     this._setJwtData(null);
     this.currentUserObservable.onNext(null);

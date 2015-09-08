@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="text-center">Регистрация</h1>
+
+  <form (^submit)="onSubmit($event)" [ng-form-model]="registrationForm">
+    <formInput [form-control]="registrationForm.controls['email']" [show-errors]="showErrors"
+     [label]="'Email'" ></formInput>
+    <formInput [form-control]="registrationForm.controls['password']" [type]="'password'"
+               [show-errors]="showErrors" [label]="'Пароль'"></formInput>
+    <formInput [form-control]="registrationForm.controls['firstName']" [show-errors]="showErrors"
+      [label]="'Имя'"></formInput>
+    <formInput [form-control]="registrationForm.controls['lastName']" [show-errors]="showErrors"
+      [label]="'Фамилия'"></formInput>
+    <formInput [form-control]="registrationForm.controls['phone']" [show-errors]="showErrors"
+               [label]="'Телефон'"></formInput>
+
+    <div>
+      <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+    </div>
+  </form>
+</div>
