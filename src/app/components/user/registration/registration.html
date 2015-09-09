@@ -13,6 +13,7 @@
     <formInput [form-control]="registrationForm.controls['phone']" [show-errors]="showErrors"
                [label]="'Телефон'"></formInput>
 
+    <div class="alert alert-danger text-center" *ng-if="error">{{error}}</div>
     <div>
       <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
     </div>

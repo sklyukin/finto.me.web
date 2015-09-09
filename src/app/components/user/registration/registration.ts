@@ -22,6 +22,7 @@ let template = require('./registration.html');
 export class Registration {
   registrationForm:ControlGroup;
   showErrors:Boolean = false;
+  error:String;
 
   constructor(public userService:UserService) {
     let fb = new FormBuilder();
@@ -38,15 +39,16 @@ export class Registration {
   onSubmit(event) {
     this.showErrors = true;
     if (!this.registrationForm.errors) {
-      let values = this.registrationForm.value;
-      this.userService.createUser(
-        {
-          email: values.email,
-          password: values.password,
-          firstName: values.firstName,
-          lastName: values.lastName,
-          phone: values.phone
-        });
+      let data = this.registrationForm.value;
+      this.error = '';
+      this.userService.createUser(data)
+        .subscribe((response) => {
+          if (!response.error) {
+            this.userService.login(data.email, data.password);
+          } else {
+            this.error = response.error.message;
+          }
+        })
     }
     event.preventDefault();
   }

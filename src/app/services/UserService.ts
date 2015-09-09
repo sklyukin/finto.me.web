@@ -87,12 +87,7 @@ export class UserService {
   }
 
   createUser(data){
-    console.log('going to create user', data);
-    let query = this.api.request('post', 'users', data);
-    query.subscribe( (data) => {
-      console.log(data);
-    });
-    return query;
+    return this.api.request('post', 'users', data);
   }
 
   logout() {

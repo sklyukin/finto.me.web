@@ -39,7 +39,42 @@ export class ApiService {
         return {};
       }
       return result.json()
+    }).map(result => {
+      //localizing errors
+      if (result.error && result.error.details) {
+        let firstError = '';
+        let details = result.error.details;
+        for (let field in details.codes) {
+          let errors = details.codes[field];
+          for (let key in errors) {
+            let error = errors[key];
+            let message = ApiService.validationMessage(error, field, result.error.details.context);
+            details.messages[field][key] = message;
+            firstError = firstError ? firstError : message;
+          }
+        }
+        result.error.message = firstError ? firstError : result.error.message;
+      }
+      return result;
     });
+  }
+
+  static validationMessage(error, field, context) {
+    switch (context) {
+      case 'user':
+        switch (field) {
+          case 'email':
+            return 'Пользователь с таким email уже зарегистрирован.';
+            break;
+        }
+        break;
+    }
+
+    //default
+    switch (error) {
+      case 'uniqueness':
+        return `Значение '${field}' должно быть уникально.`
+    }
   }
 
 
