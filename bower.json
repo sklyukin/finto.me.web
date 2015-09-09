@@ -8,5 +8,8 @@
     "src/public/bower",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap-social": "~4.10.1"
+  }
 }
