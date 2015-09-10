@@ -59,7 +59,7 @@ var config = {
 
   // Config for our build files
   output: {
-    path: root('__build__'),
+    path: root('/src/public/__build__'),
     filename: '[name].js',
     // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
