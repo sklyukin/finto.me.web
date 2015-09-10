@@ -33,13 +33,13 @@
   },
   "homepage": "http://finto.me",
   "dependencies": {
-    "angular2": "2.0.0-alpha.34",
+    "angular2": "2.0.0-alpha.37",
     "autoprefixer-loader": "^2.1.0",
     "bootstrap": "twbs/bootstrap#v4.0.0-alpha",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "reflect-metadata": "^0.1.0",
-    "rtts_assert": "2.0.0-alpha.34",
+    "rtts_assert": "2.0.0-alpha.37",
     "rx": "^2.5.3",
     "zone.js": "^0.5.2"
   },
