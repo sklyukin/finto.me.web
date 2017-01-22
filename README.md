@@ -7,3 +7,7 @@ Backend [https://github.com/sklyukin/finto.me.backend](https://github.com/sklyuk
 npm install webpack webpack-dev-server typescript tsd -g
 npm install
 ```
+
+##Legacy notes
+webpack 1.12.0
+tsd 0.6.3
